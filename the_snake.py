@@ -155,8 +155,8 @@ def main():
         if snake.get_head_position() in snake.positions[1:]:
             snake.reset()
             apple.randomize_position(snake.positions)
-
-        pygame.display.update()  # Обновление экрана
+        # Обновление экрана
+        pygame.display.update()
 
 
 if __name__ == "__main__":

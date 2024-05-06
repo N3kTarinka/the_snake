@@ -60,8 +60,8 @@ class Apple(GameObject):
         super().__init__(body_color)
         self.randomize_position(snake_positions)
 
-    """Выбор случайной доступной позиции для размещения яблока."""
     def randomize_position(self, occupied_positions):
+        """Выбор случайной доступной позиции для размещения яблока."""
         available_positions = [(x, y) for x in range
                                (GRID_WIDTH) for y in range(GRID_HEIGHT)
                                if (x, y) not in occupied_positions]

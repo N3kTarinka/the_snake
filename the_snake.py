@@ -59,6 +59,7 @@ class Apple(GameObject):
     def __init__(self, body_color=APPLE_COLOR, snake_positions=POSITION_GAME):
         super().__init__(body_color)
         self.randomize_position(snake_positions)
+
     """Выбор случайной доступной позиции для размещения яблока."""
     def randomize_position(self, occupied_positions):
         available_positions = [(x, y) for x in range
@@ -111,6 +112,7 @@ class Snake(GameObject):
 
 
 def handle_keys(snake):
+    """Обрабатывает события нажатия клавиш для управления змейкой."""
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -126,6 +128,7 @@ def handle_keys(snake):
 
 
 def main():
+    """Основная функция игры."""
     # Инициализация PyGame:
     pygame.init()
 

@@ -59,9 +59,7 @@ class Apple(GameObject):
     def __init__(self, body_color=APPLE_COLOR, snake_positions=POSITION_GAME):
         super().__init__(body_color)
         self.randomize_position(snake_positions)
-    """
-        Выбор случайной доступной позиции для размещения яблока.
-    """
+    """Выбор случайной доступной позиции для размещения яблока."""
     def randomize_position(self, occupied_positions):
         available_positions = [(x, y) for x in range
                                (GRID_WIDTH) for y in range(GRID_HEIGHT)
@@ -74,16 +72,12 @@ class Snake(GameObject):
     """Класс для объекта змеи."""
 
     def init(self):
-        """
-        Инициализация цвета тела змеи и сброс параметров.
-        """
+        """Инициализация цвета тела змеи и сброс параметров."""
         self.body_color = SNAKE_COLOR
         self.reset()
 
     def draw(self, surface):
-        """
-        Отрисовка змеи на поверхности.
-        """
+        """Отрисовка змеи на поверхности."""
         block_size = GRID_SIZE
         for pos in self.positions:
             pygame.draw.rect(surface, self.body_color, pygame.Rect(
@@ -91,15 +85,11 @@ class Snake(GameObject):
                 block_size, block_size))
 
     def get_head_position(self):
-        """
-        Получение позиции головы змеи.
-        """
+        """Получение позиции головы змеи."""
         return self.positions[0]
 
     def move(self, grow=False):
-        """
-        Движение змеи.
-        """
+        """Движение змеи."""
         head_x, head_y = self.get_head_position()
         new_head = ((head_x + self.direction[0]) % GRID_WIDTH,
                     (head_y + self.direction[1]) % GRID_HEIGHT)
@@ -110,17 +100,13 @@ class Snake(GameObject):
             self.positions.pop()
 
     def reset(self):
-        """
-        Сброс параметров змеи.
-        """
+        """Сброс параметров змеи."""
         self.position = GRID_WIDTH // 2, GRID_HEIGHT // 2
         self.direction = choice([UP, DOWN, LEFT, RIGHT])
         self.positions = [self.position]
 
     def update_direction(self, new_direction):
-        """
-        Обновление направления движения змеи.
-        """
+        """Обновление направления движения змеи."""
         self.direction = new_direction
 
 

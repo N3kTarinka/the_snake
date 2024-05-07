@@ -72,7 +72,7 @@ class Apple(GameObject):
 class Snake(GameObject):
     """Класс для объекта змеи."""
 
-    def init(self):
+    def __init__(self):
         """Инициализация цвета тела змеи и сброс параметров."""
         self.body_color = SNAKE_COLOR
         self.reset()
@@ -163,4 +163,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()

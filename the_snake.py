@@ -45,19 +45,23 @@ class GameObject:
         self.position = position
         self.body_color = body_color
 
-    def draw(self, surface):
-        """Отрисовка объекта."""
+    def draw(self):
+        """Абстрактный метод."""
+        pass
+
+    def draw_cell(self, surface, grid_size):
+        """Общий метод для отрисовки ячейки для всех объектов."""
         pygame.draw.rect(surface, self.body_color, pygame.Rect(
-            self.position[0] * GRID_SIZE,
-            self.position[1] * GRID_SIZE,
-            GRID_SIZE, GRID_SIZE))
+            self.position[0] * grid_size,
+            self.position[1] * grid_size,
+            grid_size, grid_size))
 
 
 class Apple(GameObject):
     """Класс для объекта яблока."""
 
     def __init__(self, body_color=APPLE_COLOR, snake_positions=POSITION_GAME):
-        super().__init__(body_color)
+        super().__init__(position=(0, 0), body_color=body_color)
         self.randomize_position(snake_positions)
 
     def randomize_position(self, occupied_positions):
@@ -67,6 +71,10 @@ class Apple(GameObject):
                                if (x, y) not in occupied_positions]
         if available_positions:
             self.position = choice(available_positions)
+
+    def draw(self, surface):
+        """Конкретная реализация отрисовки для объекта Apple."""
+        self.draw_cell(surface, GRID_SIZE)
 
 
 class Snake(GameObject):
